@@ -1,6 +1,6 @@
 package AnyEvent::Promises;
 {
-  $AnyEvent::Promises::VERSION = '0.01';
+  $AnyEvent::Promises::VERSION = '0.02';
 }
 use strict;
 use warnings;
@@ -85,7 +85,7 @@ AnyEvent::Promises - simple implementation of Promises/A+ spec
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
