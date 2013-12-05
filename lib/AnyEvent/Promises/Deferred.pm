@@ -1,6 +1,6 @@
 package AnyEvent::Promises::Deferred;
 {
-  $AnyEvent::Promises::Deferred::VERSION = '0.02';
+  $AnyEvent::Promises::Deferred::VERSION = '0.03';
 }
 use strict;
 use warnings;
@@ -86,7 +86,7 @@ sub _promise_reason {
 
     for my $method (
         qw(then state is_pending is_fulfilled is_rejected value
-        values reason done)
+        values reason done sync)
         )
     {
         my $d_method = '_promise_' . $method;
@@ -123,6 +123,20 @@ sub _promise_then {
         $this->_do_then( $d, @_ );
     }
     return $d->promise;
+}
+
+# runs the promise synchronously
+sub _promise_sync {
+    my $this = shift;
+    my $timeout = shift // 5;
+
+    my $cv      = AE::cv;
+    my $tm      = AE::timer $timeout, 0, sub { $cv->send("TIMEOUT\n") };
+    $this->_promise_then( sub { $cv->send( undef, @_ ); }, sub { $cv->send(@_) } );
+    my ( $error, @res ) = $cv->recv;
+
+    die $error if $error;
+    return @res;
 }
 
 sub _do_then {
@@ -172,7 +186,7 @@ AnyEvent::Promises::Deferred - deferred and promises objects
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 

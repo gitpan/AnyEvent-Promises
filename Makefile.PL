@@ -22,8 +22,11 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "AnyEvent" => 0
   },
-  "TEST_REQUIRES" => {},
-  "VERSION" => "0.02",
+  "TEST_REQUIRES" => {
+    "Test::Exception" => 0,
+    "Test::More" => 0
+  },
+  "VERSION" => "0.03",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -31,7 +34,9 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "AnyEvent" => 0
+  "AnyEvent" => 0,
+  "Test::Exception" => 0,
+  "Test::More" => 0
 );
 
 

@@ -12,5 +12,6 @@ t/01-basic.t
 t/02-then.t
 t/03-make_promise.t
 t/04-merge.t
+t/05-sync.t
 t/Utils.pm
 weaver.ini
