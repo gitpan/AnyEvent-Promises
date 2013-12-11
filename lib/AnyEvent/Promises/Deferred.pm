@@ -1,6 +1,6 @@
 package AnyEvent::Promises::Deferred;
 {
-  $AnyEvent::Promises::Deferred::VERSION = '0.03';
+  $AnyEvent::Promises::Deferred::VERSION = '0.04';
 }
 use strict;
 use warnings;
@@ -128,7 +128,7 @@ sub _promise_then {
 # runs the promise synchronously
 sub _promise_sync {
     my $this = shift;
-    my $timeout = shift // 5;
+    my $timeout = shift || 5;
 
     my $cv      = AE::cv;
     my $tm      = AE::timer $timeout, 0, sub { $cv->send("TIMEOUT\n") };
@@ -136,7 +136,7 @@ sub _promise_sync {
     my ( $error, @res ) = $cv->recv;
 
     die $error if $error;
-    return @res;
+    return wantarray? @res: $res[0];
 }
 
 sub _do_then {
@@ -186,7 +186,7 @@ AnyEvent::Promises::Deferred - deferred and promises objects
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 DESCRIPTION
 
