@@ -1,6 +1,6 @@
 package AnyEvent::Promises::Deferred;
 {
-  $AnyEvent::Promises::Deferred::VERSION = '0.04';
+  $AnyEvent::Promises::Deferred::VERSION = '0.05';
 }
 use strict;
 use warnings;
@@ -186,7 +186,7 @@ AnyEvent::Promises::Deferred - deferred and promises objects
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 DESCRIPTION
 
