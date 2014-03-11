@@ -1,7 +1,5 @@
 package AnyEvent::Promises;
-{
-  $AnyEvent::Promises::VERSION = '0.05';
-}
+$AnyEvent::Promises::VERSION = '0.06';
 use strict;
 use warnings;
 
@@ -91,7 +89,7 @@ AnyEvent::Promises - simple implementation of Promises/A+ spec
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -439,7 +437,7 @@ Roman Daniel <roman.daniel@davosro.cz>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Roman Daniel.
+This software is copyright (c) 2014 by Roman Daniel.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
